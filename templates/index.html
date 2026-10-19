@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div class="messages-container"></div>
+    <style>
+        .message-author {
+            color: blue;
+        }
+
+        .message-box {
+            display: flex;
+            gap: 8px;
+        }
+    </style>
+    </body>
+    <script>
+        const messagesContainer = document.querySelector('.messages-container');
+
+        let messages_offset = 0;
+        setInterval(async () => {
+            const response = await fetch(`{{ base_url }}/msgs?offset=${messages_offset + 1}`);
+            const messages = await response.json();
+            messages.forEach(function (val) {
+                const message_box = document.createElement('div');
+                message_box.classList.add('message-box');
+                messagesContainer.appendChild(message_box);
+
+                const message_author = document.createElement('p');
+                message_author.classList.add('message-author');
+                message_author.innerHTML = val.author_username;
+                message_box.appendChild(message_author);
+
+                const message_content = document.createElement('p');
+                message_content.classList.add('message-content');
+                message_content.innerHTML = val.content;
+                message_box.appendChild(message_content);
+
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+
+                if (val.id > messages_offset) {
+                    messages_offset = val.id;
+                }
+            })
+        }, 1000)
+    </script>
+</html>
