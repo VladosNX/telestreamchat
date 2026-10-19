@@ -1,0 +1,32 @@
+.message-author {
+    color: blue;
+}
+
+body {
+    overflow: hidden;
+}
+
+* {
+    margin: 0;
+    font-size: 32px;
+    font-family: "Inter", sans-serif;
+}
+
+.messages-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.message-box {
+    background: rgba(0, 0, 0, .5);
+    padding: 5px;
+    border-radius: 10px;
+    color: black;
+    display: flex;
+    gap: 8px;
+}
+
+.message-content {
+    color: white;
+}
