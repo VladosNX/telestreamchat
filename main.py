@@ -56,7 +56,6 @@ def on_message(msg):
         session.commit()
         session.flush()
         memory.loaded_messages.append(funcs.db_message_to_dict(new_message))
-        print(memory.loaded_messages)
 
 # Start a web thread
 web_thread = threading.Thread(target=lambda: web.app.run(port=os.environ['SERVE_PORT']))
