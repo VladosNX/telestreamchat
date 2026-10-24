@@ -15,18 +15,18 @@
             const response = await fetch(`{{ base_url }}/msgs?offset=${messages_offset + 1}`);
             const messages = await response.json();
             messages.forEach(function (val) {
-                const message_box = document.createElement('div');
+                const message_box = document.createElement('p');
                 message_box.classList.add('message-box');
                 messagesContainer.appendChild(message_box);
 
-                const message_author = document.createElement('p');
+                const message_author = document.createElement('span');
                 message_author.classList.add('message-author');
-                message_author.innerHTML = val.author_username;
+                message_author.textContent = val.author_username;
                 message_box.appendChild(message_author);
 
-                const message_content = document.createElement('p');
+                const message_content = document.createElement('span');
                 message_content.classList.add('message-content');
-                message_content.innerHTML = val.content;
+                message_content.textContent = val.content;
                 message_box.appendChild(message_content);
 
                 window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });

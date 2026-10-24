@@ -1,5 +1,7 @@
 .message-author {
     color: blue;
+    display: inline;
+    padding-right: 8px;
 }
 
 body {
@@ -23,10 +25,10 @@ body {
     padding: 5px;
     border-radius: 10px;
     color: black;
-    display: flex;
-    gap: 8px;
+    display: inline;
 }
 
 .message-content {
     color: white;
+    display: inline;
 }
